@@ -2,7 +2,7 @@
 {% block page_title%} Home {% endblock page_title%}
 
 {% block content %}
-<h1>Home Page <h1>
+<h1>Home Page<h1>
      {% if user.is_authenticated  %}
             <p>Hello Welcome {{user.username}} | <a href = "{% url 'logout' %}">Logout</a></p>
      {% else %}
