@@ -22,4 +22,5 @@ urlpatterns = [
     path('' , include('pages.urls')) ,
     path ('accunts/' , include('django.contrib.auth.urls')) ,
     path('accunts/' , include('accunts.urls')) ,
+    path ('books/' ,include('books.urls') ) ,
 ]
