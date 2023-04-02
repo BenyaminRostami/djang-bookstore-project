@@ -1,5 +1,6 @@
 from django.views import generic
 from .models import Book
+from django.urls import reverse_lazy
 class BookListViews(generic.ListView) :
     model = Book
     template_name = 'books/book_list.html'
@@ -17,3 +18,7 @@ class BookUpdateView(generic.UpdateView) :
     fields = ['title' , 'auther' , 'discription' , 'price']
     template_name = 'books/book_update.html'
 
+class BookDeleteView(generic.DeleteView):
+    model = Book
+    template_name = 'books/book_delete.html'
+    success_url = reverse_lazy ('book_list')
