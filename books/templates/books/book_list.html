@@ -2,9 +2,9 @@
 {% block page_title %}لیست کتاب ها  {% endblock %}
 {%block content %} {%for book in books%}
 
-<h1> <a href  ={{book.get_absolute_url}}>   {{book.title}}  </a></h1>
+<h1> <a href  ={{book.get_absolute_url}}>   {{book.title|capfirst}}  </a></h1>
 
-<p>{{book.discription}}</p>
+<p>{{book.discription|truncatewords:10}}</p>
 <br>
 
 {% endfor %}<a href="{% url 'book_create' %} ">اضافه کردن کتاب جدید </a>
