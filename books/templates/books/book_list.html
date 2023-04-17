@@ -16,7 +16,8 @@
                 <div class="col-md-8 h-100">
                     <div class="d-flex flex-column justify-content-between h-100">
                         <div class="card-body">
-                            <a href="{{book.get_absolute_url}}">  <h3 class="card-title"><strong>{{book.title}}</strong></h3></a>
+                            <a href="{{book.get_absolute_url}}"><h3 class="card-title"><strong>{{book.title}}</strong>
+                            </h3></a>
 
                             <p class="card-text pt-3">{{book.discription|truncatewords:30}}</p>
                             <p class="text-muted">نویسنده:{{book.auther}}</p>
@@ -26,9 +27,25 @@
             </div>
         </div>
         {%endfor%}
-       
+
     </div>
 </div>
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item disabled">
+            {% if page_obj.has_previous%}
+            <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+        </li>
+        <li class="page-item"><a class="page-link" href="#">{{page_obj.number}}</a></li>
 
+        <li class="page-item">
+            {% if page_obj.has_next%}
+                 <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+            {% endif %}
+
+        </li>
+    </ul>
+</nav>
 <footer class="bg-light text-center text-lg-start mt-5">
- {% endblock %}
+    {% endblock %}
