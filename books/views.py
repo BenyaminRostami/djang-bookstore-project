@@ -1,16 +1,22 @@
 from django.views import generic
 from .models import Book
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404 ,render
+# Create your views here.
 class BookListViews(generic.ListView) :
     model = Book
     paginate_by = 6
     template_name = 'books/book_list.html'
     context_object_name = 'books'
-# Create your views here.
-class BookDetailView(generic.DetailView):
-    model=Book
+# class BookDetailView(generic.DetailView):
+#     model=Book
+#     template_name = 'books/book_detail.html'
+def book_detail_view(request,pk):
+    book = get_object_or_404(Book , pk=pk)
+    comments=book.comments.all()
+    return render(request,'books/book_detail.html' , {'book':book , 'comments':comments} )
 
-    template_name = 'books/book_detail.html'
+
 class BookCreateView(generic.CreateView):
     model = Book
     fields = ['title' , 'discription' , 'auther' , 'price', 'cover']
